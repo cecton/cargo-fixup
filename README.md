@@ -9,8 +9,6 @@ This tool is useful when you want to:
 - Inject debug code or instrumentation temporarily.
 - Automate source patching as part of your workflow.
 
----
-
 ## How It Works
 
 `cargo-fixup` installs a `rustc-wrapper` shell script into your project's
@@ -33,8 +31,6 @@ At build time, this wrapper:
 
 All patch logs are written to a file you specify during installation.
 
----
-
 ## Installation
 
 ```bash
@@ -52,8 +48,6 @@ By default, patching logs are discarded. If you want to capture logs (e.g. to
 debug patch application issues), run `cargo fixup /path/to/logfile` to
 configure where logs should be written during builds.
 
----
-
 ## Directory Structure
 
 ```
@@ -69,8 +63,6 @@ your-project/
 **Note:** The patch directory name must match the **exact package name and
 version**, formatted as `<name>-<version>` (e.g. `clap-4.5.38`). This ensures
 patches are applied only to the correct version of a crate.
-
----
 
 ## Example: Patching `clap`
 
@@ -101,8 +93,6 @@ cargo build
 
 If `clap` (4.5.38) is being compiled, your patch will be applied automatically.
 
----
-
 ## Notes
 
 * The wrapper only runs when `cargo` is building external dependencies.
@@ -110,8 +100,6 @@ If `clap` (4.5.38) is being compiled, your patch will be applied automatically.
   applied.
 * This tool doesn't modify `Cargo.toml` or interfere with `[patch]` or
   `[replace]`.
-
----
 
 ## Why Not Use `[patch]`?
 
@@ -123,8 +111,6 @@ Cargo’s `[patch]` feature requires maintaining a fork of the entire crate.
 * Experiments
 * CI workflows where you don’t want to push forks
 
----
-
 ## Compatibility
 
 * Linux, macOS, WSL (Unix shell required)
@@ -132,8 +118,6 @@ Cargo’s `[patch]` feature requires maintaining a fork of the entire crate.
 
 If you need native Windows support, consider rewriting the wrapper as a Rust
 binary.
-
----
 
 ## Uninstall
 
@@ -143,20 +127,14 @@ To revert, delete:
 * `.cargo/rustc-wrapper.sh`
 * `patches/`
 
----
-
 ## License
 
 MIT OR Apache-2.0
-
----
 
 ## Contributing
 
 This project does not accept issues, pull requests, or other contributions.
 Forks are welcome — feel free to use, modify, and build on it as needed.
-
----
 
 ## See Also
 
