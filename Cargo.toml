@@ -1,0 +1,16 @@
+[package]
+name = "cargo-fixup"
+version = "0.1.0"
+authors = ["Cecile Tonglet <cecile.tonglet@cecton.com>"]
+license = "MIT OR Apache-2.0"
+edition = "2024"
+description = "A Cargo helper that installs a rustc-wrapper to dynamically patch crate source code at build time — no need to modify Cargo.toml or maintain forks."
+repository = "https://github.com/cecton/cargo-fixup"
+homepage = "https://github.com/cecton/cargo-fixup"
+documentation = "https://docs.rs/cargo-fixup"
+readme = "README.md"
+keywords = ["cargo", "patch", "build", "rustc-wrapper", "dependencies"]
+categories = ["development-tools::cargo-plugins"]
+
+[dependencies]
+cargo_metadata = "0.19.2"
