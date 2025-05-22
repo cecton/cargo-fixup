@@ -151,6 +151,13 @@ MIT OR Apache-2.0
 
 ---
 
+## Contributing
+
+This project does not accept issues, pull requests, or other contributions.
+Forks are welcome — feel free to use, modify, and build on it as needed.
+
+---
+
 ## See Also
 
 * [`mettke/cargo-patch`](https://github.com/mettke/cargo-patch)
