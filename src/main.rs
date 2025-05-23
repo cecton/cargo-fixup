@@ -56,12 +56,19 @@ if [ -d "$PATCH_DIR" ]; then
 
   mkdir -p "$TARGET_PATCHED_DIR"
   rm -rf -- "$PATCHED_SRC"
-  cp -a -- "$CARGO_MANIFEST_DIR" "$PATCHED_SRC"
+  cp -RL -- "$CARGO_MANIFEST_DIR" "$PATCHED_SRC"
 
   for PATCH_FILE in "$PATCH_DIR"/*; do
     [ -f "$PATCH_FILE" ] || continue
-    echo "Applying patch: $PATCH_FILE"
-    patch -s -p1 -d "$PATCHED_SRC" < "$PATCH_FILE"
+    if [ -x "$PATCH_FILE" ]; then
+      echo "Executing: $PATCH_FILE"
+      (cd "$PATCHED_SRC" && "$PATCH_FILE")
+    elif [ "${{PATCH_FILE##*.}}" = "patch" ]; then
+      echo "Applying patch: $PATCH_FILE"
+      patch -s -p1 -d "$PATCHED_SRC" < "$PATCH_FILE"
+    else
+      echo "Not executable nor patch file: $PATCH_FILE"
+    fi
   done
 
   new_args=()

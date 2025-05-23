@@ -31,6 +31,20 @@ At build time, this wrapper:
 
 All patch logs are written to a file you specify during installation.
 
+### How Patch Files Are Applied
+
+In each crate-specific patch directory (e.g. `patches/clap-4.5.38/`),
+`cargo-fixup` processes every file as follows:
+
+* If the file is **executable** (has the executable bit set), it is
+  **executed directly** inside the patched crate's directory. This allows for
+  arbitrary custom fixup scripts. Ensure the file has a valid **shebang line**.
+* If the file is **not executable** and ends in `.patch`, it is treated as a
+  **unified diff patch** and applied using the `patch` command.
+
+This design allows both static patches and dynamic patch logic per crate
+version, offering high flexibility.
+
 ## Installation
 
 ```bash
